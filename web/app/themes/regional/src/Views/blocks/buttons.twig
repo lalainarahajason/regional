@@ -1,0 +1,28 @@
+<style>
+    #{{ block_id }}:hover {
+        color: {{ parameters.color }} ;
+        border:1px solid {{ parameters.color }}
+    }
+    #{{ block_id }}.outline:hover .btn-mask {
+        background-color : {{ parameters.border }}
+     }
+    #{{ block_id }}.outline:hover  {
+         color:white;
+     }
+</style>
+{% if parameters.alignement == "center" or parameters.alignment == "right" %}
+    <div class="text-{{ parameters.alignement }}">
+{% endif %}
+
+<a id="{{ block_id }}" href="{{ parameters.button.url }}"
+   class="hopes--button btn btn-{{ parameters.color }} inline-block relative {{ parameters.type }} {{ parameters.size }}"
+   target="{{ parametesr.button.target }}" role="button"
+   style="{% if parameters.type == 'full' %} border: 1px solid {{ parameters.color }}; background-color: {{ parameters.color }} {% else %} border: 1px solid {{ parameters.border }}{% endif %}"
+>
+
+    <span class="btn-mask absolute top-0 left-0 z-10 bg-white w-0 h-full"></span>
+    <span class="z-50 relative">{{ parameters.button.title }}</span>
+</a>
+        {% if parameters.alignement == "center" or parameters.alignment == "right" %}
+    </div>
+{% endif %}

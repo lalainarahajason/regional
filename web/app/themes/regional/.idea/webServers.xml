@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3ea353cc-cf57-4843-a348-d1f06a3cb881" name="MLK" url="http://espacemartinlutherking.com">
+        <fileTransfer rootFolder="/www-mlkgrandparis/wp-content/themes/comet-wp" accessType="SFTP" host="espacemartinlutherking.com" port="22" sshConfigId="78794de0-6d6c-40a6-9bff-913ed78a2531" sshConfig="ange@espacemartinlutherking.com:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

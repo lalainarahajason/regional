@@ -1,0 +1,21 @@
+{
+  "name": "opsleb",
+  "version": "1.0.0",
+  "description": "opsleb theme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tailwindcss-cli@latest build ./assets/css/tailwind.css -o ./assets/css/dist.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.3.0",
+    "tailwindcss": "^2.0.4"
+  },
+  "dependencies": {
+    "cssnano": "^4.1.10",
+    "postcss-cli": "^8.3.1"
+  }
+}

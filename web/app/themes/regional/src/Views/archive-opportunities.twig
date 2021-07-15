@@ -1,0 +1,55 @@
+{% extends "main.twig" %}
+{% block jumbotron %}
+    <header class="bg-blue relative z-10 pt-24">
+
+        {% set disposition= 'flex-row' %}
+        {% include 'blocks/search-opportunities.twig' %}
+
+    </header>
+{% endblock %}
+{% block body %}
+    <div class="flex max-w-screen-2xl mx-auto">
+        <div class="w-full lg:w-9/12">
+            {% if posts|length %}
+                <div class="lg:flex flex-wrap h-full posts-list">
+
+                        {% for post in posts %}
+                            {%  set terms = post.terms({query:{taxonomy:'filters'}}) %}
+                            <a href="{{ post.meta('link_site') }}" target="_blank" title={{ post.post_title }} class="{{ terms|map(t => t.slug)|join(' ') }} post-item text-sm p-14 xl:text-lg lg:w-6/12 xl:px-8 2xl:px-20 post-block block ">
+                                <div class="post-meta mb-4">
+                                    <span class="text-small">{{ post.post_date|date('d.m.y') }} - {{ terms|join(', ') }}</span>
+                                </div>
+                                <h4 class="post-title font-bold">{{ post.post_title }}</h4>
+                                <p class="text-xs leading-6">{{ post.content|striptags  }}</p>
+                            </a>
+                        {% endfor %}
+                </div>
+            {% else %}
+                {% set alert_message = "No opportunities found" %}
+                <div class="no-posts p-10 text-center w-full">
+                    {% include 'helpers/alert.twig' %}
+                </div>
+
+            {% endif %}
+        </div>
+        <div class="w-full lg:w-3/12">
+            <div class="py-14 px-10">
+                <h6 class="uppercase text-xs border-b-1 border-solid pb-2 mb-4" style="border-bottom: 1px solid #EAEAEA">Filter</h6>
+                {% if terms_childrens %}
+                    <ul class="list-none filter-by-terms">
+                        <li class="mb-3"><a data-term="post-item" href="/category/news-events" class="{{ parent_categories ? 'text-blue' : ''  }} hover:text-blue uppercase">Show all</a></li>
+                        {% for term in terms_childrens %}
+                            {% if current_taxonomy.term_id == term.term_id  %}
+                                <li class="mb-3"><a data-term="{{ term.slug }}" href="{{ term.link }}" title="Opsleb : {{ term.name }}" class="text-blue hover:text-blue uppercase">{{ term.name }}</a></li>
+                            {% else %}
+                                <li class="mb-3"><a data-term="{{ term.slug }}" href="{{ term.link }}" title="Opsleb : {{ term.name }}" class="hover:text-blue uppercase">{{ term.name }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

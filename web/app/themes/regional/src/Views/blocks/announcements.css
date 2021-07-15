@@ -1,0 +1,6 @@
+.announce-block { width: 100% }
+@media(min-width: 768px) {
+    .announce-block {
+        width:48%
+    }
+}

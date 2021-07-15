@@ -1,0 +1,41 @@
+.post-content .hopes--mosaic {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+.post-content .hopes--mosaic p {
+    font-size:13px !important;
+}
+
+
+
+@media (min-width: 1000px) {
+    .post-content .hopes--mosaic {
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+}
+
+@media(min-width:1280px) {
+    .post-content .hopes--mosaic p {
+        font-size:14px !important;
+    }
+}
+
+@media(min-width:1300px) {
+    .post-content .hopes--mosaic p {
+        font-size:16px !important;
+    }
+}
+.post-content h2 + .hopes--mosaic,
+.post-content h3 + .hopes--mosaic,
+.post-content h4 + .hopes--mosaic,
+.post-content h5 + .hopes--mosaic,
+.post-content h6 + .hopes--mosaic {
+    margin-top:0;
+}
+
+/* Remove opaque bg to cover block */
+.wp-block-cover-image.has-background-dim:not([class*="-background-color"]),
+.wp-block-cover.has-background-dim:not([class*="-background-color"]) {
+    background-color:transparent !important;
+}

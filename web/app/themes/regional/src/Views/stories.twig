@@ -1,0 +1,148 @@
+{% extends "main.twig" %}
+{% block jumbotron %}
+
+    {% set type = function('get_query_var', 'post_type') %}
+    {% set bgimage = options.stories_cover.cover.url %}
+    {% if type == "opportunities" or type == "jobs" %}
+        {% set bgimage = "" %}
+    {% endif %}
+
+    {% include 'blocks/header-single.twig' %}
+    <style>
+        .posts-list {
+            padding-left:2%;
+            padding-right:2%;
+        }
+        .post-item {
+            width: 90%;
+            margin: 15px auto;
+            max-height:350px;
+            overflow: hidden;
+        }
+        .post-item {
+            min-height:250px;
+        }
+        @media(min-width:980px) {
+            .post-item {
+                width: 48.1%;
+                margin: 0 0 30px 0;
+            }
+            .post-item {
+                min-height:332px;
+            }
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    {% set type = function('get_query_var', 'post_type') %}
+
+    <div class="flex flex-wrap mx-auto md:py-0 md:px-0 bg-gray-50">
+        <div class="hidden lg:block lg:w-1/12"></div>
+        <div class="w-full lg:w-11/12 pl-8 lg:pl-0 xl:pl-0 flex flex-wrap">
+            <div id="posts-list" class="w-full order-2 md:order-1 mt-5 pr-8 md:mt-8 lg:w-9/12">
+                    <!-- Archive Descriptions -->
+
+
+                    {% if posts|length %}
+                        <div class="lg:flex flex-wrap justify-between h-full">
+                            {% if type == "jobs" and options["jobs-archive"].description %}
+                                <div class="archive-description mb-10">
+                                    {{ options["jobs-archive"].description }}
+                                </div>
+                            {% endif %}
+                            {% if type == "opportunities" and options["opportunities-archive"].description %}
+                                <div class="archive-description mb-10">
+                                    {{ options["opportunities-archive"].description }}
+                                </div>
+                            {% endif %}
+
+                            {% for post in posts %}
+
+                                {% if type == "opportunities" or type == "jobs" %}
+                                    {% set terms = function('wp_get_post_terms', post.ID, ['countries', 'degrees', 'filters']) %}
+                                {% endif %}
+
+                                <!-- Stories -->
+                                {% if type == "stories" %}
+                                    {% set terms = function('wp_get_post_terms', post.ID, ['taxstories']) %}
+                                {% endif %}
+
+
+                                {% set file = function('get_field', 'video', post.ID) %}
+                                {% set url = post.meta('video-url') %}
+                                {% if file %}
+                                    {% set media_type = file.type %}
+                                {% endif %}
+                                {% if type == "jobs" %}
+                                    {% set post_link = function('get_field','link_site', post.ID) %}
+
+                                    {% set target = "_blank" %}
+                                {% else %}
+                                    {% set post_link = post.link %}
+                                    {% set target = "_self" %}
+                                {% endif %}
+
+                                <a title="{{ post.post_title }}" target="{{ target }}" href="{% if user or type == "jobs" %}{{ post_link }}{% else %} # {% endif %}" class="{% if not user and type != "jobs" %} pointer-events-none {% endif %} lg:w-6/12 bg-blue hover:bg-yellow post-item  {{ terms|map(t => t.slug)|join(' ') }} block overflow-hidden post-item relative">
+                                    {% if post.thumbnail %}
+                                        <img src="{{ post.thumbnail('full') }}" class="object-fill">
+                                    {% endif %}
+
+                                    {% if file %}
+
+                                    {% endif %}
+                                    <div class="absolute top-8 left-5" style="width:30px">
+                                        {% if type == "opportunities" or type == "jobs" %}
+                                            {% include "blocks/svg/briefcase.twig" %}
+                                        {% else %}
+                                            <img src="{{ theme.link }}/assets/images/{{ file.type }}.svg" alt="">
+                                        {% endif %}
+                                    </div>
+                                    <div class="absolute item-{{ post.post_type }} top-0 left-0 right-0 bottom-0 flex items-end">
+                                        <div class="w-8/12 ml-10 mb-9">
+                                            <div class="activity-metas">
+                                                <span class="uppercase bg-blue-light inline-block px-3 py-1 text-sm asap">
+                                                    {% if terms|length %}
+                                                        {{ terms|map(t => t.name)|join(' / ') }}
+                                                    {% else %}
+                                                        {{ __("No categories", "regional")}}
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                            <h4 class="text-blue-dark text-normal leading-hfour mb-0"><span class="bg-white w-56 inline-block p-4">{{ post.post_title }}</span></h4>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            {% endfor %}
+                        </div>
+
+                    {% else %}
+                        {% set alert_message = "No news in this category" %}
+                        {% include 'helpers/alert.twig' %}
+                    {% endif %}
+
+            </div>
+            <div class="w-full bg-white flex-grow order-1 lg:order-2 md:w-2/12">
+                <div class="py-14 px-10">
+                    <h6 class="uppercase text-xs border-b-1 border-solid pb-2 mb-4" style="border-bottom: 1px solid #EAEAEA">
+                        {{ __("More filter", "hopes") }}</h6>
+                    {% if terms_childrens %}
+                        <ul class="list-none filter-by-terms">
+                            <li class="mb-3"><a data-term="post-item" href="/category/news-events" class="{{ parent_categories ? 'text-blue' : ''  }} hover:text-blue uppercase">All {{ type }}</a></li>
+                            {% for term in terms_childrens %}
+                                {% if current_taxonomy.term_id == term.term_id  %}
+                                    <li class="mb-3"><a data-term="{{ term.slug }}" href="{{ term.link }}" title="Opsleb : {{ term.name }}" class="text-blue hover:text-blue uppercase">{{ term.name }}</a></li>
+                                {% else %}
+                                    <li class="mb-3"><a data-term="{{ term.slug }}" href="{{ term.link }}" title="Opsleb : {{ term.name }}" class="hover:text-blue uppercase">{{ term.name }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

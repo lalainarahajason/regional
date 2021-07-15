@@ -1,0 +1,23 @@
+<div class="bg-blue py-10">
+    <div class="max-w-5xl mx-auto flex flex-wrap justify-center">
+        {% for contact in contacts %}
+            <div class="py-4 w-full sm:w-6/12 md:w-4/12 px-4">
+                <div class="bg-white flex items-center justify-center p-5 sm:p-10 p-3 h-56">
+                    <div>
+                        <h4 class="font-bold uppercase text-center mb-2">{{ contact.titre }}</h4>
+                        <div class="separator w-2/12 bg-blue-dark h-0.5 mx-auto mb-6"></div>
+                        {% if contact.adresses_email %}
+                            {% for email in contact.adresses_email %}
+                                <div class="mt-2 flex items-center ">
+                                    <img class="mr-2 w-5" src="{{ theme.link }}/assets/images/email-black.svg" alt="Hopesleb contact email">
+                                    <a href="mailto:{{ email.adresse_email }}" class="hover:text-blue text-xs">{{ email.adresse_email }}</a>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,21 @@
+{% set image_order = "order-2" %}
+{% if position == "left" %}
+    {% set image_order = "order-1"  %}
+{% endif %}
+<div class="hopes--mosaic bg-blue-dark alignfull text-white">
+    <div class="flex flex-wrap">
+        <!-- The content container -->
+        <div class="p-3 order-2 lg:text-base flex {% if bouton.url != "" %} justify-between flex-col {% else %} items-center {% endif %} p-14 lg:w-6/12 xl:p-24 2xl:p-32 text-justify">
+            <div class="mb-4">{{ content }}</div>
+            {% if bouton.url != "" %}
+                <div class="text-center mt-5 xl:mt-0">
+                    {% set btn_text = bouton.title %}
+                    {% set btn_url = bouton.url %}
+                    {% set btn_target = bouton.target %}
+                    {% include 'helpers/buttons/outline-medium.twig' %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="lg:w-6/12 {{ image_order }} text-justify">{{ function('wp_get_attachment_image', image.ID, 'full', {'class': 'h-full'}) }}</div>
+    </div>
+</div>

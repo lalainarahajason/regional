@@ -1,0 +1,26 @@
+<div
+        {% if post.thumbnail %} style="background-image:url({{ post.thumbnail.src }});" {% endif %}
+        class="bg-center w-full h-40 sm:h-auto bg-no-repeat bg-cover excerpt p-5 lg:p-0 sm:w-9/12 bg-gray-50">
+    <!-- excerpt -->
+    {% if not post.thumbnail %}
+        <div class="lg:h-2/4 lg:w-10/12 mx-auto flex items-center justify-center">
+            {{ post.meta('extrait')}}
+        </div>
+        <!-- partners -->
+        <div class="lg:h-2/4 w-10/12 mx-auto mt-10 lg:mt-0 flex flex-col items-center justify-center">
+            <div class="text-center uppercase text-small"> Implementing Institution and Partners  </div>
+            <div class="w-full flex flex-wrap items-center justify-around mt-10">
+                {% if partners|length > 0 %}
+                    {% for p in partners %}
+
+                        <div class="w-3/12">
+                            {{ function('get_the_post_thumbnail', p.partner.ID, 'full') }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+
+</div>
+<!--- Partenaires -->

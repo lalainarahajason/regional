@@ -1,0 +1,53 @@
+<div class="announcement alignfull bg-blue-dark py-10 px-5 lg:py-14 lg:px-10 ">
+    <div class="max-w-screen-lg mx-auto">
+        <h4 class="text-white text-center">{{ title }}</h4>
+        <div class="flex flex-wrap">
+            {% if files|length %}
+                <div class="announces-lists-block w-full md:w-3/4">
+                    <div class="flex flex-wrap ">
+                        {% for file in files %}
+                            <a href="{{ file.link.url }}" target="{{ file.link.target }}" class="announce-block hover:bg-blue hover:text-white block mb-4 flex mx-auto items-center {% if file.image.sizes|length == 0 %} justify-between py-8 px-4 {% endif %} uppercase bg-gray-100 ">
+                                <div class="flex flex-wrap items-center flex-row w-full">
+                                    {% if file.image.sizes|length > 0 %}
+                                        <span>
+                                    <img src="{{ file.image.sizes["download-thumbnail"] }}" alt="{{ file.title }}">
+                                </span>
+                                    {% endif %}
+                                    <span class="inline-block text-xs tracking-wider font-medium pl-4 {% if file.image.sizes|length == 0 %} w-11/12 {% else %} w-8/12 lg:w-8/12 {% endif %} text-black">{{ file.link.title }}</span>
+                                    <span class="inline-block w-5 ml-3 lg:ml-0">
+                                <img src="{{ theme.link }}/assets/images/mini-arrow.svg" alt="{{ file.link.title }}">
+                            </span>
+                                </div>
+
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            {% endif %}
+            {% if contact|length %}
+                <div class="contact-block w-full md:px-4 md:w-1/4">
+                    <h5 class="text-white">{{ contact.title }}</h5>
+                    <a href="mailto:{{ contact.contact_email }}"
+                       class="block flex items-center mb-4 w-100 bg-blue-darker hover:bg-blue rounded p-3 text-small text-white">
+                        <img src="{{ theme.link }}/assets/images/email.svg" class="mr-3 w-6" >
+                        <span>{{ contact.contact_email }}</span>
+                    </a>
+                    {% if contact.contact_telephone|length > 0 %}
+
+                            <div class="text-xs flex text-white mb-2 p-3">
+                                <img src="{{ theme.link }}/assets/images/telephone.svg" class="mr-3 w-6" >
+                                <div class="flex flex-col justify-between">
+                                    {% for item in contact.contact_telephone %}
+                                        <div>{{ item.telephone }}</div>
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

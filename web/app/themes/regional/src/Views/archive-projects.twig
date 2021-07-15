@@ -1,0 +1,36 @@
+{% extends "main.twig" %}
+{% block jumbotron %}
+<header class="overflow-hidden bg-white relative z-10">
+
+    {{ couverture_src }}
+    <h2 class="text-lg
+            lg:text-5xl
+            xl:text-7xl
+            uppercase
+            font-bold
+            text-right
+            pb-5 pr-5 lg:pb-20 lg:pr-20
+            absolute right-0 bottom-0"
+    >
+        <span class="h-stroke">Discover the projects </span> <br/>
+        <span class="text-white">Funded by hopes-leb</span>
+    </h2>
+</header>
+{% endblock %}
+{% block body %}
+    {% if posts|length %}
+    <div class="my-14 mx-auto lg:px-14">
+
+        <div class="lg:flex flex-wrap justify-between flex-item">
+            {% set centrer = "mx-auto lg:mx-0" %}
+            {% for project in posts %}
+                {% include 'blocks/project-item.twig' %}
+            {% endfor %}
+        </div>
+
+    </div>
+    {% else %}
+        {% set alert_message = "No news in this category" %}
+        {% include 'helpers/alert.twig' %}
+    {% endif %}
+{% endblock %}

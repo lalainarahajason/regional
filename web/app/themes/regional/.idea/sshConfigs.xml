@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="espacemartinlutherking.com" id="78794de0-6d6c-40a6-9bff-913ed78a2531" port="22" nameFormat="DESCRIPTIVE" username="ange" />
+    </configs>
+  </component>
+</project>

@@ -1,0 +1,82 @@
+{% extends "main.twig" %}
+{% block jumbotron %}
+    {% if current_taxonomy.taxonomy == "category" %}
+        {% set bgimage = function('get_field', 'activities_cover', 'option') %}
+    {% else %}
+        {% set bgimage = function('get_the_post_thumbnail_url', post.ID, 'full', attribute('class', 'w-full object-full')) %}
+    {% endif %}
+    {% set title = "Our activities <br /> News and events" %}
+    {% include 'blocks/header-single.twig' %}
+
+    <style>
+        .posts-list {
+            padding-left:2%;
+            padding-right:2%;
+        }
+        .post-item {
+            width: 90%;
+            margin: 15px auto;
+            max-height:350px;
+            overflow: hidden;
+            background-color: #F9F9F9;
+        }
+        @media(min-width:980px) {
+            .post-item {
+                width: 48.1%;
+                margin: 0 0 30px 0;
+            }
+        }
+    </style>
+{% endblock %}
+{% block body %}
+
+    <div class="flex">
+        <div class="w-full lg:w-9/12">
+            <div class="lg:flex flex-wrap justify-between p-5 md:p-8 h-full bg-gray-50">
+                {% if posts|length %}
+                    {% for post in posts %}
+                        {%  set terms = post.terms({query:{taxonomy:'category'}}) %}
+                        <!--a href="{{ post.guid }}" title={{ post.post_title }} class="{{ terms|map(t => t.slug)|join(' ') }} post-item text-sm p-14 xl:text-lg lg:w-6/12 xl:px-8 2xl:px-20 post-block block ">
+                        <div class="post-meta mb-4"><span class="text-small">{{ post.post_date|date('d.m.y') }} - {{ post.terms( {query:{taxonomy:'category', orderby:'name', order: 'ASC'}} )|join(' ') }}</span></div>
+                        <h4 class="post-title font-bold">{{ post.post_title }}</h4>
+                        </a-->
+                        <a title="{{ post.post_title }}" href="{{ post.link }}" class="lg:w-6/12 {{ terms|map(t => t.slug)|join(' ') }} block overflow-hidden post-item relative">
+                            <img src="{{ post.thumbnail('full') }}" class="object-fill">
+                            <div class="absolute top-0 left-0 right-0 bottom-0 flex items-end">
+                                <div class="w-8/12 ml-10 mb-9">
+                                    <div class="activity-metas">
+                                        <span class="uppercase bg-blue-light inline-block px-3 py-1 text-sm asap">{{ post.date('d.m.Y') }} | {{ post.terms( {query:{taxonomy:'category', orderby:'name', order: 'ASC'}} )|join('/ ') }}</span>
+                                    </div>
+                                    <h4 class="text-blue-dark text-base leading-hfour mb-0"><span class="bg-white inline-block p-4">{{ post.post_title }}</span></h4>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+
+                {% else %}
+                    {% set alert_message = "No news in this category" %}
+                    {% include 'helpers/alert.twig' %}
+                {% endif %}
+            </div>
+        </div>
+        <div class="w-full lg:w-3/12">
+            <div class="py-14 px-10">
+                <h6 class="uppercase text-xs border-b-1 border-solid pb-2 mb-4" style="border-bottom: 1px solid #EAEAEA">Filter</h6>
+                {% if terms_childrens %}
+                    <ul class="list-none filter-by-terms">
+                            <li class="mb-3"><a data-term="post-item" href="/category/news-events" class="{{ parent_categories ? 'text-blue' : ''  }} hover:text-blue uppercase">All news</a></li>
+                        {% for term in terms_childrens %}
+                            {% if current_taxonomy.term_id == term.term_id  %}
+                                <li class="mb-3"><a data-term="{{ term.slug }}" href="{{ term.link }}" title="Opsleb : {{ term.name }}" class="text-blue hover:text-blue uppercase">{{ term.name }}</a></li>
+                            {% else %}
+                                <li class="mb-3"><a data-term="{{ term.slug }}" href="{{ term.link }}" title="Opsleb : {{ term.name }}" class="hover:text-blue uppercase">{{ term.name }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

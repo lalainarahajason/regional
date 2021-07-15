@@ -1,0 +1,26 @@
+{% if object.post_type == "post" %}
+    {% set back_link = "news-events" %}
+{% endif %}
+
+{% if post.post_type == "stories" %}
+    {% set back_link = "stories" %}
+    {% set back_label = "Back networking, stories & talks" %}
+{% endif %}
+
+{% if post.post_type == "skills" %}
+    {% set back_link = "skills" %}
+    {% set back_label = "Back to develop your skills" %}
+{% endif %}
+
+{% if post.post_type == "opportunities" %}
+    {% set back_link = "opportunities" %}
+    {% set back_label = "Back to SCHOLARSHIP & STUDYS OPPORTUNITIES" %}
+{% endif %}
+<a href="{{ site.link }}/{{ back_link }}" class="relative block alignfull bg-yellow py-28">
+    <div class="absolute -left-60" style="top:50%; transform: translateY(-50%)">
+        {% include "blocks/svg/fleche-bulle-blanche.twig" %}
+    </div>
+    <div class="max-w-3xl mx-auto">
+        <h3 class="text-center mb-0 text-2xl uppercase">{{ back_label }}</h3>
+    </div>
+</a>

@@ -1,0 +1,33 @@
+
+{% if projects|length > 0 %}
+    <div class="alignfull bg-blue-dark py-20 px-14 ">
+            <div class="mx-auto relative mb-20">
+                <h4 class="uppercase text-white text-center relative">
+                    Discover the projects funded by hopes-leb
+                    <div class="absolute inset-y-0 right-0 flex justify-between w-1/12">
+                        <div class="swiper-button-prev relative"></div>
+                        <div class="swiper-button-next relative"></div>
+                    </div>
+                </h4>
+                <div class="swiper-container projectCarousel mt-20">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+                        {% set centrer = "" %}
+                        {% for project in projects %}
+                            {% include 'blocks/project-item.twig' %}
+                        {% endfor %}
+                    </div>
+                    <!-- If we need navigation buttons -->
+                </div>
+
+            </div>
+            {% set btn_text = "All projects" %}
+            {% set btn_url = "/projects" %}
+            {% set btn_target = "_self" %}
+            {% set btn_bg= "bg-blue-darker" %}
+            <div class="text-center">
+                {% include 'helpers/buttons/outline-medium.twig' %}
+            </div>
+    </div>
+{% endif %}
+

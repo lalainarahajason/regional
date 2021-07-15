@@ -1,0 +1,90 @@
+<!doctype html>
+<html {{ function('language_attributes') }} >
+<head>
+    <meta charset="{{ function('bloginfo', 'charset') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    {{ function('wp_head') }}
+</head>
+
+<body dir="ltr" {{ function('body_class') }}>
+{% include 'helpers/sendingblue.twig' %}
+    <div class="overlay" >
+        <span class="flex items-center justify-center close-video text-small absolute top-10 right-10 rounded-full w-8 h-8 text-white bg-blue uppercase" role="button">X</span>
+    </div>
+    <!-- Include nav -->
+    <header class="hidden">
+        <div class="lg:absolute {{ is_relative }} top-0 left-0 w-full flex">
+            <div class="brand bg-white self-start">
+                <!--a href="{{ site.link }}" title="{{ site.title }}">
+                    <img src="{{ options.logos.main.url }}" class="inline-block">
+                    <img src="{{ options.logos.secondary.url }}" class="inline-block">
+                </a-->
+            </div>
+
+            <div class="menu-burger self-end">
+
+                <div class="burger menu-toggle flex flex-col items-center justify-center" role="button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                {% if is_translated %}
+                    {% include 'helpers/language-switcher.twig' %}
+                {% endif %}
+                <a href="{{ site.link }}/contact-us" class="block hover:bg-blue transition-all delay-75 contact bg-blue-dark flex justify-center items-center">
+                    <img src="{{ theme.link }}/assets/images/contact.png" alt="">
+                </a>
+            </div>
+        </div>
+    </header>
+    <header class="absolute top-0 right-0 z-50">
+        <div class="menu-burger">
+            <div class="burger menu-toggle flex flex-col items-center justify-center" role="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- language switcher -->
+        {% include 'helpers/language-switcher.twig' %}
+        <!-- login -->
+        {% if user %}
+            <a href={{ function('wp_logout_url', site.link ) }}" class="bg-yellow flex justify-center py-5" >
+                {% include 'blocks/svg/logout.twig' %}
+            </a>
+        {% else %}
+            <a href="{{ site.link }}/connexion" class="bg-yellow flex justify-center py-5">
+                <img src="{{ theme.link }}/assets/images/account.png" style="width:30px">
+            </a>
+        {% endif %}
+
+        <a href="{{ site.link }}/contact-us" class="bg-blue-light flex justify-center py-5">
+            <img src="{{ theme.link }}/assets/images/contact.png" alt="">
+        </a>
+    </header>
+    {% if headerMenu %}
+    <div class="menu-container overflow-hidden bg-blue fixed top-0 left-0 flex items-center justify-center z-50 w-full h-full">
+        <div class="w-full ">
+            <div class="close-menu py-4 px-4 bg-yellow menu-toggle absolute top-0 right-0 text-blue flex flex-col items-center justify-center text-2xl" role="button">
+                <svg height="20pt" viewBox="0 0 329.26933 329" width="20pt" xmlns="http://www.w3.org/2000/svg"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/></svg>
+                <div class="text-sm uppercase croix-item">{{ __('close', 'hopes') }}</div>
+            </div>
+
+                <nav>
+                    <ul role="navigation" id="menu">
+                        {% for menu in headerMenu.items %}
+                            <li class="pt-4 pb-4 main-menu-item overflow-hidden px-10 md:px-60 relative">
+                                <img src="{{ theme.link }}/assets/images/arrow-menu.svg" class="absolute -left-60 opacity-0 v-center">
+                                <a href="{{ menu.link }}" class="relative hover:text-yellow uppercase tracking-wide text-4xl xl:text-4xl text-white">{{ menu.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+
+        </div>
+    </div>
+    {% endif %}

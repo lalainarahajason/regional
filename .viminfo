@@ -1,0 +1,258 @@
+# Ce fichier viminfo a été généré par Vim 7.4.
+# Vous pouvez l'éditer, mais soyez prudent.
+
+# 'encoding' dans lequel ce fichier a été écrit
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~h
+# Dernier motif de recherche  :
+~Msle0~/\<web\>
+
+# Historique ligne de commande (chronologie décroissante) :
+:q
+:wq
+:w
+:wa
+
+# Historique chaîne de recherche (chronologie décroissante) :
+? \<web\>
+
+# Historique expression (chronologie décroissante) :
+
+# Historique ligne de saisie (chronologie décroissante) :
+
+# Historique ligne de saisie (chronologie décroissante) :
+
+# Registres :
+""-	CHAR	0
+	?
+
+# Marques dans le fichier :
+'0  30  0  ~/.gitignore
+'1  4  0  ~/.env
+'2  1  0  ~/.gitignore
+'3  7  0  ~/.gitignore
+'4  26  0  ~/.gitignore
+'5  73  0  ~/web/app/themes/opsleb/src/Views/stories.twig
+'6  18  0  ~/web/app/themes/opsleb/archive-stories.php
+'7  1  0  ~/web/app/themes/opsleb/acf-json/group_603a0afeb50fd.json
+'8  1  0  ~/web/app/themes/opsleb/acf-json/group_6022bb5936398.json
+'9  1  0  ~/web/app/themes/opsleb/acf-json/group_6022b202f3879.json
+
+# Liste de sauts (le plus récent en premier) :
+-'  30  0  ~/.gitignore
+-'  1  0  ~/.gitignore
+-'  4  0  ~/.env
+-'  1  0  ~/.env
+-'  7  0  ~/.gitignore
+-'  26  0  ~/.gitignore
+-'  6  0  ~/.gitignore
+-'  73  0  ~/web/app/themes/opsleb/src/Views/stories.twig
+-'  1  0  ~/web/app/themes/opsleb/src/Views/stories.twig
+-'  18  0  ~/web/app/themes/opsleb/archive-stories.php
+-'  1  0  ~/web/app/themes/opsleb/archive-stories.php
+-'  1  0  ~/web/app/themes/opsleb/acf-json/group_603a0afeb50fd.json
+-'  1  0  ~/web/app/themes/opsleb/acf-json/group_6022bb5936398.json
+-'  1  0  ~/web/app/themes/opsleb/acf-json/group_6022b202f3879.json
+-'  7  10  ~/web/app/themes/opsleb/src/Views/blocks/buttons.twig
+-'  1  0  ~/web/app/themes/opsleb/src/Views/blocks/buttons.twig
+-'  43  44  ~/composer.json
+-'  1  0  ~/composer.json
+-'  42  25  ~/web/app/themes/opsleb/acf-json/group_603a0afeb50fd.json
+-'  87  8  ~/composer.lock
+-'  1  0  ~/composer.lock
+-'  22  0  ~/composer.json
+-'  39  28  ~/composer.json
+-'  1  0  ~/.composer.json
+-'  1  0  ~/.composer.phar
+-'  1  0  ~/.bash_history
+-'  196  21  ~/web/app/themes/opsleb/acf-json/group_6022bb5936398.json
+-'  2  5  ~/.gitignore
+-'  30  52  ~/web/app/themes/opsleb/src/Controllers/Theme.php
+-'  1  0  ~/web/app/themes/opsleb/src/Controllers/Theme.php
+-'  1  0  ~/web/app/themes/opsleb/index.php
+-'  1  0  ~/web/app/debug.log
+-'  13  36  ~/config/environments/development.php
+-'  1  0  ~/config/environments/development.php
+-'  16  23  ~/.env
+-'  7  28  ~/config/environments/development.php
+-'  14  0  ~/.env
+-'  16  0  ~/config/environments/staging.php
+-'  1  0  ~/config/environments/staging.php
+-'  5  0  ~/config/environments/development.php
+-'  12  0  ~/.env
+-'  2  2  ~/web/app/themes/opsleb/index.php
+-'  51  0  ~/web/app/themes/opsleb/functions.php
+-'  1  0  ~/web/app/themes/opsleb/functions.php
+-'  8  33  ~/.gitignore
+-'  10  12  ~/.gitignore
+-'  29  7  ~/.gitignore
+-'  11  34  ~/.gitignore
+-'  1  0  ~/composer.js
+-'  3  12  ~/.env
+-'  5  13  ~/.env
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  28  7  ~/.gitignore
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  51  0  ~/web/app/themes/opsleb/functions.php
+-'  1  0  ~/web/app/themes/opsleb/functions.php
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  51  0  ~/web/app/themes/opsleb/functions.php
+-'  1  0  ~/web/app/themes/opsleb/functions.php
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  1  0  ~/composer.js
+-'  16  0  ~/config/environments/staging.php
+-'  1  0  ~/web/app/themes/opsleb/index.php
+-'  1  0  ~/web/app/debug.log
+-'  30  52  ~/web/app/themes/opsleb/src/Controllers/Theme.php
+-'  1  0  ~/web/app/themes/opsleb/src/Controllers/Theme.php
+-'  1  0  ~/web/app/themes/opsleb/index.php
+-'  1  0  ~/web/app/debug.log
+-'  13  36  ~/config/environments/development.php
+-'  1  0  ~/.composer.json
+-'  1  0  ~/.composer.phar
+-'  1  0  ~/.bash_history
+-'  30  52  ~/web/app/themes/opsleb/src/Controllers/Theme.php
+-'  1  0  ~/web/app/themes/opsleb/src/Controllers/Theme.php
+-'  1  0  ~/web/app/themes/opsleb/index.php
+-'  1  0  ~/web/app/debug.log
+-'  13  36  ~/config/environments/development.php
+
+# Historique des marques dans les fichiers (les plus récentes en premier) :
+
+> ~/.gitignore
+	"	30	0
+	^	1	0
+	.	8	0
+	+	9	13
+	+	11	34
+	+	15	7
+	+	10	0
+	+	8	33
+	+	4	0
+	+	2	5
+	+	7	0
+	+	8	0
+	i	9	0
+
+> ~/.env
+	"	4	0
+	^	16	24
+	.	17	0
+	+	4	34
+	+	5	13
+	+	4	9
+	+	1	9
+	+	2	9
+	+	3	12
+	+	16	45
+	+	17	0
+
+> ~/web/app/themes/opsleb/src/Views/stories.twig
+	"	73	0
+
+> ~/web/app/themes/opsleb/archive-stories.php
+	"	18	0
+
+> ~/web/app/themes/opsleb/acf-json/group_603a0afeb50fd.json
+	"	1	0
+	^	42	26
+	.	43	0
+	+	42	0
+	+	43	0
+
+> ~/web/app/themes/opsleb/acf-json/group_6022bb5936398.json
+	"	1	0
+	^	196	22
+	.	197	0
+	+	198	0
+	+	197	0
+
+> ~/web/app/themes/opsleb/acf-json/group_6022b202f3879.json
+	"	1	0
+
+> ~/web/app/themes/opsleb/src/Views/blocks/buttons.twig
+	"	7	10
+	^	7	11
+	.	7	11
+	+	7	11
+
+> ~/composer.json
+	"	43	44
+	^	43	45
+	.	43	4
+	+	39	28
+	+	43	4
+
+> ~/composer.lock
+	"	87	8
+	^	87	9
+	.	8	0
+	+	7	0
+	+	8	0
+
+> ~/.composer.json
+	"	1	0
+
+> ~/.composer.phar
+	"	1	0
+
+> ~/.bash_history
+	"	1	0
+
+> ~/web/app/themes/opsleb/src/Controllers/Theme.php
+	"	30	52
+	^	30	53
+	.	30	52
+	+	1	1
+	+	30	52
+
+> ~/web/app/themes/opsleb/index.php
+	"	1	0
+	^	2	3
+	.	2	2
+	+	2	2
+
+> ~/web/app/debug.log
+	"	1	0
+
+> ~/config/environments/development.php
+	"	13	36
+	^	13	37
+	.	13	36
+	+	7	0
+	+	13	36
+
+> ~/config/environments/staging.php
+	"	16	0
+	^	16	33
+	.	16	32
+	+	16	32
+
+> ~/web/app/themes/opsleb/functions.php
+	"	51	0
+
+> ~/composer.js
+	"	1	0

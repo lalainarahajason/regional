@@ -1,0 +1,12 @@
+{% include 'header.twig' %}
+<div id="primary" class="content-area">
+    <main id="main" class="site-main">
+        {% block jumbotron %} {% endblock %}
+        {% block body %} {% endblock %}
+    </main>
+</div>
+{% if function('is_front_page') %}
+    {% include 'footer-home.twig' %}
+{% else %}
+    {% include 'footer.twig' %}
+{% endif %}

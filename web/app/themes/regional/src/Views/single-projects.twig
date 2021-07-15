@@ -1,0 +1,11 @@
+{% extends "main.twig" %}
+{% block jumbotron %}
+    {% include 'helpers/page-bg-header.twig' %}
+{% endblock %}
+{% block body %}
+    <div class="post-content max-w-3xl mx-auto">
+        <div {% if current_language == "ar" %} dir="rtl" {% endif%} class="{% if current_language == "ar" %} frutiger {% endif%} w-11/12 py-5 lg:w-full lg:py-14 mx-auto">
+            {{ post.content }}
+        </div>
+    </div>
+{% endblock %}

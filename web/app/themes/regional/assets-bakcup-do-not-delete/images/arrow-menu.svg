@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="223px" height="47px" viewBox="0 0 223 47" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 18</title>
+    <g id="maquettes-HOPES-ALUMNI" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-nonconnecte-b" transform="translate(-1040.000000, -4059.000000)">
+            <g id="Group-18" transform="translate(1151.500000, 4082.500000) scale(1, -1) rotate(90.000000) translate(-1151.500000, -4082.500000) translate(1128.500000, 3971.500000)">
+                <g id="FLECHE" transform="translate(12.000000, 14.000000)">
+                    <text id="—————————————————" transform="translate(12.500000, 105.000000) rotate(90.000000) translate(-12.500000, -105.000000) " font-family="Clan-Book" font-size="16" font-weight="normal" letter-spacing="0.631578947" fill="#ffffff">
+                        <tspan x="-89.9724211" y="110">—————————————————</tspan>
+                    </text>
+                    <polyline id="Path-5" stroke="#ffffff" stroke-width="0.8" transform="translate(11.813711, 9.500000) rotate(-14.000000) translate(-11.813711, -9.500000) " points="2 10.9547258 14.23844 3 21.6274212 16"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

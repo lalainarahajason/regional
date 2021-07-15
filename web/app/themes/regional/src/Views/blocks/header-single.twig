@@ -1,0 +1,166 @@
+<header class="overflow-hidden bg-white relative z-10">
+    <div class="w-full ml-auto flex flex-wrap">
+        {% include 'helpers/logos.twig' %}
+        <div class="w-9/12 swiper-container relative z-40 singleSlider">
+            <!-- Additional required wrapper -->
+            {% if type == "opportunities" or (registration and user == false) or type == "jobs"  %}
+                <img src="{{ theme.link }}/assets/images/arrow-menu.svg" class="absolute vertical-arrow-menu" />
+            {% endif %}
+            <div class="swiper-wrapper bg-blue">
+                <!-- Slides -->
+                    <div class="swiper-slide single-slide relative bg-no-repeat bg-cover" style="background-image: url({{ bgimage }})">
+                        <div class="bottom-0 transform -translate-x-2/4 left-2/4 w-11/12 md:w-8/12 flex wrap justify-between absolute">
+                            <div class="lg:self-center w-11/12 max-w-screen-md {% if type != "opportunities" %} mx-auto {% endif %} lg:pb-20">
+
+                                {% set a = [title] %}
+                                {% if "|" in title %}
+                                    {% set a = title|split('|') %}
+                                {% endif %}
+                                {% if "br" in title %}
+                                    {% set a = title|split('br') %}
+                                {% endif %}
+
+
+                                <h2 class="text-lg  {% if type == "opportunities" %} text-white {% else %} text-white {% endif %} title-bg lg:text-4xl xl:text-5xl uppercase font-normal pb-4 pr-5 lg:pr-4 mb-0">
+                                    {% for t in a %}
+                                        <span class="tracking-wider {% if type != "opportunities" %}bg-white text-blue px-3 {% endif %} table mb-2">{{ t|striptags|replace({'/>': ''}) }}</span>
+                                    {% endfor %}
+                                </h2>
+                                {% if type == "opportunities" or type == "jobs" %}
+                                    <form id="search-opportunities" method="POST" action="{{ site.link }}/{{ type }}/#posts-list">
+                                        <div class="field-group">
+                                            <label for="keyword"><small class="text-white tracking-normal block mb-2">Search your opportunities by keyword</small></label>
+                                            <input type="text" name="keyword" placeholder="Search by Keyword" class="w-100 p-4 text-white text-center bg-blue-dark" value="{{ form.keyword }}"/>
+                                        </div>
+                                        <div class="field-group flex flex-wrap justify-between my-4">
+                                            {% if degrees %}
+                                                <div class="field-item w-full md:w-5/12 pr-2">
+                                                    <label for="type"><small class="text-white tracking-normal mb-2 block">{{ __("type", "hopes") }}</small></label>
+                                                    <select name="degrees" id="type" class="w-full bg-blue-darker py-4 px-8 text-white">
+                                                        <option value=""> Type </option>
+                                                        {% for degree in degrees %}
+                                                            <option {% if degree.slug == form.degrees %} selected {% endif %} value="{{ degree.slug }}">{{ degree.name }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            {% endif %}
+                                            {% if countries %}
+                                                <div class="field-item w-full md:w-5/12 pl-2">
+                                                    <label for="type"><small class="text-white tracking-normal mb-2 block">{{ __("Country which you are based", "hopes") }}</small></label>
+                                                    <select name="countries" id="type" class="w-full bg-blue-darker py-4 px-8 text-white">
+                                                        <option value=""> Country </option>
+                                                        {% for country in countries %}
+                                                            <option {% if country.slug == form.country %} selected {% endif %} value="{{ country.slug }}">{{ country.name }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            {% endif %}
+                                            <div class="flex flex-col w-full md:w-2/12 md:pl-3">
+                                                <label class="md:mb-1">&nbsp;</label>
+                                                <div onclick="document.getElementById('search-opportunities').submit();" class="bg-yellow flex-grow cursor-pointer text-center flex justify-center items-center">
+                                                    <svg class="margin-auto" width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                        <g id="maquettes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <g id="Scholarships-&amp;-Study-opportunities" transform="translate(-893.000000, -2965.000000)" fill="#000000" fill-rule="nonzero">
+                                                                <g id="MAP-BLOC-CATALOG" transform="translate(11.000000, 2364.000000)">
+                                                                    <g id="Group-14" transform="translate(865.000000, 207.000000)">
+                                                                        <g id="Group-15" transform="translate(1.000000, 385.000000)">
+                                                                            <g id="bouton-search" transform="translate(16.000000, 9.000000)">
+                                                                                <path d="M41.7939793,40.4669358 L35.903164,34.5762266 C37.3674216,32.8154079 38.2495799,30.5543225 38.2495799,28.0906529 C38.2495799,22.4886168 33.6921374,17.9310345 28.0903697,17.9310345 C22.4884769,17.9310345 17.9310345,22.4886168 17.9310345,28.0906529 C17.9310345,33.6923136 22.4884769,38.2495206 28.0903697,38.2495206 C30.5539062,38.2495206 32.8151094,37.3674846 34.5759224,35.9032222 L40.4668628,41.7940566 C40.6500514,41.9773709 40.8902988,42.0689655 41.130421,42.0689655 C41.3705433,42.0689655 41.6107906,41.9773709 41.7941044,41.7940566 C42.1606067,41.427553 42.1606067,40.8334394 41.7939793,40.4669358 Z M19.807967,28.0906529 C19.807967,23.5235608 23.5234175,19.8079731 28.0903697,19.8079731 C32.6571968,19.8079731 36.3725222,23.5235608 36.3725222,28.0906529 C36.3725222,32.6573697 32.6571968,36.372582 28.0903697,36.372582 C23.5234175,36.372582 19.807967,32.6573697 19.807967,28.0906529 Z" id="Shape"></path>
+                                                                            </g>
+                                                                        </g>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                {% endif %}
+
+                                {% if registration and user == false %}
+                                    {% if login_fails %}
+                                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                            <strong class="font-bold">{{ __('Error ! ') }} </strong>
+                                            <span class="block sm:inline">{{ __('Login or Password not correct') }}</span>
+                                            <span class="absolute top-0 bottom-0 right-0 px-4 py-3"> </span>
+                                        </div>
+                                    {% endif %}
+                                    {% if recover == 1 %}
+                                        <div class="bg-blue-light border border-blue-light text-blue px-4 py-3 rounded relative" role="alert">
+                                            <strong class="font-bold">{{ __('Thank you ! ') }} </strong>
+                                            <span class="block sm:inline">{{ __('If you have registered account with this email, an instruction will be sent in your mailbox') }}</span>
+                                            <span class="absolute top-0 bottom-0 right-0 px-4 py-3"> </span>
+                                        </div>
+                                    {% endif %}
+                                    {% if recover == 2 %}
+                                        <div class="bg-white border border-blue-light text-blue px-4 py-3 rounded relative" role="alert">
+                                            <strong class="font-bold">{{ __('Warning ! ') }} </strong>
+                                            <span class="block sm:inline">{{ __('Your account is not yet validated, you will receive an email as soon as the administrator grants you access.') }}</span>
+                                            <span class="absolute top-0 bottom-0 right-0 px-4 py-3"> </span>
+                                        </div>
+                                    {% endif %}
+                                    <form id="forgot-password" class="hidden forgot-field" action="{{ site.link }}/connexion" method="POST">
+                                        <input type="hidden" name="forgot-password" value="1">
+                                        <div class="field-group mb-4">
+                                            <label for="login"><small class="text-white tracking-normal block mb-2">{{ __('Forgot password', 'hopes') }}</small></label>
+                                            <input type="email" name="email" placeholder="Enter your email login" class="w-100 p-4 text-white text-center bg-blue-dark" value=""/>
+                                        </div>
+                                        <div class="w-full">
+                                            <div class="w-full md:w-6/12 md:ml-auto pl-2">
+                                                <div onclick="document.getElementById('forgot-password').submit();"
+                                                     class="py-2 px-4 bg-yellow w-full cursor-pointer text-center flex justify-around items-center">
+                                                    <span class="uppercase">Connexion</span>
+                                                    <span><img src="{{ theme.link }}/assets/images/right-arrow.png" alt=""></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <form id="registration" class="login-form" method="POST" action="{{ site.link }}/connexion">
+
+                                        <input type="hidden" name="login-user" value="1">
+                                        <div class="field-group flex flex-wrap justify-between my-4">
+                                            <div class="field-item w-full md:w-6/12 pr-2">
+                                                <div class="field-group">
+                                                    <label for="login"><small class="text-white tracking-normal block mb-2">Login</small></label>
+                                                    <input type="email" name="email" placeholder="{{ __('Enter your email address', 'hopes') }}" class="w-100 p-4 text-white text-center bg-blue-dark" value=""/>
+                                                </div>
+                                            </div>
+                                            <div class="field-item w-full md:w-6/12 pl-2">
+                                                <div class="field-group">
+                                                    <label for="keyword"><small class="text-white tracking-normal block mb-2">Password</small></label>
+                                                    <input type="password" name="password" placeholder="{{ __('Enter your password', 'hopes') }}" class="w-100 p-4 text-white text-center bg-blue-dark" value=""/>
+                                                    <div class="w-100 text-right">
+                                                        <span style="font-size:13px" class="text-white forgot-password underline cursor-pointer">{{ __("Forgot your password ?", "hopes") }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="w-full">
+                                            <div class="w-full md:w-6/12 flex justify-end md:ml-auto pl-2">
+                                                <div onclick="document.getElementById('registration').submit();"
+                                                     class="py-2 px-4 bg-yellow w-full md:w-40 cursor-pointer text-center flex justify-around items-center">
+                                                    <span class="uppercase">Connexion</span>
+                                                    <span><img src="{{ theme.link }}/assets/images/right-arrow.png" alt=""></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+                                {% endif %}
+
+                                {% if registration and user %}
+                                    <div class="text-yellow px-3">{{ __("You are already logged in", "hopes") }}  <a class="underline" href="{{ function('wp_logout_url') }}" title="logout">Logout</a></div>
+                                {% endif %}
+                            </div>
+                            <!--h2 class="text-lg lg:text-5xl xl:text-7xl h-stroke uppercase font-bold text-right pb-5 pr-5 lg:pb-20 lg:pr-20">{{ slide.title }}</h2-->
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</header>

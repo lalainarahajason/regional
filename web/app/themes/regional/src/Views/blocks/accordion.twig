@@ -1,0 +1,27 @@
+{% if accordions %}
+
+    <div class="accordion-template relative bg-blue alignfull">
+        <span class="absolute top-50 -left-60" style="top:50%; transform:translateY(-50%)">
+                {% include "blocks/svg/arrow-rond-jaune.twig" %}
+            </span>
+        <div class="max-w-screen-md mx-auto px-3 py-14 lg:px-10 lg:px-0 lg:py-14 relative overflow-hidden">
+            <span class="absolute arrow_box block top-0 left-0 h-8 w-8 bg-transparent">
+
+            </span>
+            {% for accordion in accordions %}
+                <div class="accordion-item mt-7 text-white">
+                    <h4 class="text-white mb-2 flex items-center" role="button">
+                        <svg {% if current_language == "ar" %} style="transform:rotate(-180deg); margin-left:15px; " {% endif %} width="19" height="19" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path fill="transparent" d="M-373-89h1440v621H-373z"/><path d="M17.86 9.124l-7.21-7.968a.449.449 0 00-.68 0 .571.571 0 000 .75l6.389 7.063H1.481c-.266 0-.481.237-.481.531 0 .294.215.531.48.531H16.36l-6.39 7.062a.571.571 0 000 .751.457.457 0 00.34.156.457.457 0 00.34-.156l7.21-7.968a.571.571 0 000-.752z" fill="#FFF" fill-rule="nonzero" stroke="#FFF"/></g></svg>
+                        <span class="pl-4 uppercase">{{ accordion.title }}</span>
+                    </h4>
+                    <div class="accordion-content {% if not loop.first %} hidden {% endif %} ml-8">{{ accordion.content }}</div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+        <span class="absolute -bottom-40 right-10">
+                {% include "blocks/svg/arrow-green-vertical.twig" %}
+            </span>
+    </div>
+{% endif %}

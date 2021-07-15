@@ -1,0 +1,8 @@
+{% if back_link %}
+    <div class="back-link inset-left pl-10 lg:pl-0 flex items-center text-white mb-4 relative z-20">
+        <a href="{{ back_link }}" class="inline-block flex items-center">
+            <span class="w-5 inline-block">{% include 'helpers/arrow-left.twig' %} </span>
+            <span class="pl-4 text-small font-normal">back to</span>
+        </a>
+    </div>
+{% endif %}

@@ -1,0 +1,74 @@
+<div class="form-block max-w-screen-2xl mx-auto py-10 {% if disposition %} form-group-row {% else %} form-group-col {% endif %}">
+    {% if form_title %}
+        <h6 class="text-white sm:mx-2 max-w-xl uppercase mb-10 {% if disposition %} font-bold {% endif %}">{{ form_title }}</h6>
+    {% endif %}
+
+    <form action="/opportunities/" method="GET" name="search-opportunities">
+        <div class="flex  flex-wrap {% if disposition %} {{ disposition }} justify-center {% else %} flex-col {% endif %}">
+            <div class="px-4 mb-4 sm:mb-0 sm:px-0 sm:mx-2 form-group mb-5">
+                <div class="mx-auto align-center">
+                    <label for="tag" class="block text-xs">Search your opportunities by keyword</label>
+                    <input
+                            type="text"
+                            id="keyword"
+                            name="keyword"
+                            class="text-sm"
+                            value="{% if query_parameters.keyword != "" %} {{ query_parameters.keyword }} {% endif %}">
+                </div>
+
+            </div>
+            <div class="px-4 mb-4 sm:mb-0 sm:px-0 sm:mx-2 form-group mb-5">
+                <label for="country" class="block text-xs">Country of residence</label>
+                <div class="dropdown">
+                    <div class="select">
+                        <span class="text-small uppercase">
+                            {% if query_parameters.countries != "" %}
+                                {{ query_parameters.countries }}
+                            {% else %}
+                                Select Country
+                            {% endif %}
+                        </span>
+                        <i class="fa fa-chevron-left"></i>
+                    </div>
+                    <input type="hidden" name="countries" value="{{ query_parameters.countries }}">
+                    <ul class="dropdown-menu">
+                        <li id="all-countries" class="text-white uppercase text-small">Select country</li>
+                        {% for country in countries %}
+                            <li id="{{ country.slug }}" class="text-white uppercase text-small">{{ country.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="px-4 mb-4 sm:mb-0 sm:px-0 sm:mx-2 form-group mb-5">
+                <label for="degree" class="block text-xs">Degree type</label>
+                <div class="dropdown">
+                    <div class="select">
+                        <span class="text-small uppercase">
+                            {% if query_parameters.degrees != "" %}
+                                {{ query_parameters.degrees }}
+                            {% else %}
+                                Select Degree
+                            {% endif %}
+                        </span>
+                        <i class="fa fa-chevron-left"></i>
+                    </div>
+                    <input type="hidden" name="degrees" value="{{ query_parameters.degrees }}">
+                    <ul class="dropdown-menu">
+                        <li id="all-degrees" class="text-white uppercase text-small">Select degree</li>
+                        {% for degree in degrees %}
+                            <li id="{{ degree.slug }}" class="text-white uppercase text-small">{{ degree.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="sm:mx-2 form-submit" onClick="javascript:this.form.submit();">
+                <label>&nbsp;</label>
+                <button type="submit" role="button"  class="flex items-center justify-center text-xs btn btn-outline hover:bg-blue-dark hover:border-blue-dark uppercase text-white">
+                    <img src="{{ theme.link }}/assets/images/search.svg" alt="Start your search now ">
+                    {% if not disposition %} <span>Start your search now </span> {% endif %}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

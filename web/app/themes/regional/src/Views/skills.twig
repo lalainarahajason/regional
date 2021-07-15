@@ -1,0 +1,111 @@
+{% extends "main.twig" %}
+{% block jumbotron %}
+    {% set type = function('get_query_var', 'post_type') %}
+    {% set bgimage = options.skills.cover.url %}
+    {% include 'blocks/header-single.twig' %}
+    <style>
+        .posts-list {
+            padding-left:2%;
+            padding-right:2%;
+        }
+        .post-item {
+            width: 90%;
+            margin: 15px auto;
+            max-height:350px;
+            overflow: hidden;
+        }
+        .post-item {
+            min-height:250px;
+        }
+        @media(min-width:980px) {
+            .post-item {
+                width: 48.1%;
+                margin: 0 0 30px 0;
+            }
+            .post-item {
+                min-height:332px;
+            }
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    {% set type = function('get_query_var', 'post_type') %}
+
+    <div class="flex flex-wrap mx-auto md:py-0 md:px-0 bg-gray-50">
+        <div class="hidden lg:block lg:w-1/12"></div>
+        <div class="w-full lg:w-11/12 pl-8 lg:pl-0 xl:pl-0 flex flex-wrap">
+            <div id="posts-list" class="w-full order-2 md:order-1 mt-5 pr-8 md:mt-8 lg:w-9/12">
+                    <!-- Archive Descriptions -->
+                    <div class="archive-description mb-10">
+                        {{ options.skills.description }}
+                    </div>
+                    {% if posts|length %}
+                        <div class="lg:flex flex-wrap justify-between h-full">
+                            {% if type == "jobs" and options["jobs-archive"].description %}
+                                <div class="archive-description mb-10">
+                                    {{ options["jobs-archive"].description }}
+                                </div>
+                            {% endif %}
+                            {% if type == "opportunities" and options["opportunities-archive"].description %}
+                                <div class="archive-description mb-10">
+                                    {{ options["opportunities-archive"].description }}
+                                </div>
+                            {% endif %}
+
+                            {% for post in posts %}
+
+                                {% set terms = function('wp_get_post_terms', post.ID, ['skilltaxonomy']) %}
+
+                                {% set file = function('get_field', 'video', post.ID) %}
+                                {% set url = post.meta('video-url') %}
+                                {% if file %}
+                                    {% set media_type = file.type %}
+                                {% endif %}
+                                {% if type == "jobs" %}
+                                    {% set post_link = function('get_field','link_site', post.ID) %}
+
+                                    {% set target = "_blank" %}
+                                {% else %}
+                                    {% set post_link = post.link %}
+                                    {% set target = "_self" %}
+                                {% endif %}
+
+                                <a title="{{ post.post_title }}" target="{{ target }}" href="{% if user %}{{ post_link }}{% else %}#{% endif %}" class="{% if not user %} pointer-events-none {% endif %}lg:w-6/12 bg-blue hover:bg-yellow post-item  {{ terms|map(t => t.slug)|join(' ') }} block overflow-hidden post-item relative">
+                                    {% if post.thumbnail %}
+                                        <img src="{{ post.thumbnail('full') }}" class="object-fill">
+                                    {% endif %}
+
+
+                                    <div class="absolute top-8 left-5" style="width:30px">
+                                        {% include "blocks/svg/briefcase.twig" %}
+                                    </div>
+                                    <div class="absolute item-{{ post.post_type }} top-0 left-0 right-0 bottom-0 flex items-end">
+                                        <div class="w-8/12 ml-10 mb-9">
+                                            <div class="activity-metas">
+                                                <span class="uppercase bg-blue-light inline-block px-3 py-1 text-sm asap">
+                                                    {% if terms|length %}
+                                                        {{ terms|map(t => t.name)|join(' / ') }}
+                                                    {% else %}
+                                                        {{ __("No categories", "regional")}}
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                            <h4 class="text-blue-dark bg-white text-normal leading-hfour mb-0"><span class="bg-white w-56 inline-block p-4" style="background-color: white">{{ post.post_title }}</span></h4>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            {% endfor %}
+                        </div>
+
+                    {% else %}
+                        {% set alert_message = "No news in this category" %}
+                        {% include 'helpers/alert.twig' %}
+                    {% endif %}
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

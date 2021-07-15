@@ -1,0 +1,14 @@
+{% extends "main.twig" %}
+
+{% block body %}
+    <div class="bg-blue-dark">
+        <div class="flex flex-wrap">
+            {% include 'helpers/page-sidebar.twig' %}
+            <div {% if current_language == "ar" %} dir="rtl" {% endif%} class="{% if current_language == "ar" %} frutiger {% endif%} post-content bg-white lg:w-7/12 p-5 lg:p-20">
+                <h1 class="headline text-4xl font-bold">{{post.title}}</h1>
+                {{ post.content }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

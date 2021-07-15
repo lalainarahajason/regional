@@ -1,0 +1,20 @@
+{
+  "name": "opsleb/hopes",
+  "description": "Site web de Opsleb",
+  "license": "GPL",
+  "authors": [
+    {
+      "name": "opsleb",
+      "email": "contact@opsleb.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "require": {
+    "timber/timber": "^1.18",
+    "hellonico/timber-dump-extension": "^1.0"
+  }
+}

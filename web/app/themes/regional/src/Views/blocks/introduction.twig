@@ -1,0 +1,69 @@
+<style>
+    .right-content p:first-of-type:first-letter {
+        float: left;
+        font-size: 8.4em;
+        line-height: 0.68;
+        font-weight: 100;
+        margin: 0.05em 0.1em 0 0;
+        text-transform: uppercase;
+        font-style: normal;
+        color: #F8E800;
+    }
+
+    .left-content h1,
+    .left-content h2,
+    .left-content h3,
+    .left-content h4,
+    .left-content h5 {
+        margin-bottom: 0px;
+        width:100%;
+    }
+    .left-content ul,
+    .left-content p {
+        margin-top: 30px
+    }
+    .right-content p {
+        font-size: 20px;
+        line-height: 2.2rem;
+    }
+    @media(min-width: 1000px) {
+        .media {
+            height:350px;
+        }
+    }
+</style>
+
+<div class="alignfull overflow-hidden flex flex-wrap relative">
+    <div class="hidden md:flex flex-wrap absolute w-full h-full">
+        <div class="bg-yellow w-full md:w-6/12"></div>
+        <div class="bg-blue w-full md:w-6/12"></div>
+    </div>
+    <div class="w-full md:w-6/12 bg-yellow md:bg-transparent relative flex justify-end flex-wrap left-content">
+        <div class="hidden md:block w-1/12"></div>
+        <div class="w-full md:w-10/12 p-8 max-w-screen-md flex flex-wrap flex-row items-center left-content ">
+            {{ left_content }}
+        </div>
+        <div class="hidden md:block bg-white w-full h-3/4 self-end"></div>
+    </div>
+    <div class="w-full md:w-6/12 form-block bg-blue md:bg-transparent relative flex justify-start">
+        <div class="w-full text-white text-justify">
+            {% if media %}
+                <div class="media overflow-hidden max-w-screen-md">
+                    {% if media.type == 'image' %}
+                        <img src="{{ media.url }}" class="object-fill">
+                    {% endif %}
+                    {% if media.type == 'video' %}
+                        <video muted controls autoplay class="w-full">
+                            <source src="{{ media.url }}" type="video/mp4">
+                        </video>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            <div class="px-14 mx-auto py-10 md:py-20 right-content max-w-screen-md">
+                {{ right_content }}
+            </div>
+
+        </div>
+    </div>
+</div>

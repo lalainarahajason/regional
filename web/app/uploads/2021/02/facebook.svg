@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="41px" height="41px" viewBox="0 0 41 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>facebook</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="FOOTER-3" transform="translate(-67.000000, -102.000000)">
+            <g id="facebook" transform="translate(67.000000, 102.000000)">
+                <circle id="Oval" fill="#151515" cx="20.5" cy="20.5" r="20.5"></circle>
+                <path d="M25.7497899,13.4858512 L23.8465822,13.4867241 C22.3543564,13.4867241 22.0654503,14.2232637 22.0654503,15.3041766 L22.0654503,17.6875097 L25.6243522,17.6875097 L25.6230915,21.42062 L22.0654503,21.42062 L22.0654503,31 L18.3533758,31 L18.3533758,21.42062 L15.25,21.42062 L15.25,17.6875097 L18.3533758,17.6875097 L18.3533758,14.9347065 C18.3533758,11.7397612 20.2324205,10 22.9765023,10 L25.75,10.0045829 L25.7497899,13.4858512 L25.7497899,13.4858512 Z" id="Path" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

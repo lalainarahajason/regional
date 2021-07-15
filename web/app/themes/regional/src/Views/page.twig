@@ -1,0 +1,19 @@
+{% extends "main.twig" %}
+{% block jumbotron %}
+	{% set bgimage = function('get_the_post_thumbnail_url', post.ID, 'full', attribute('class', 'w-full object-full')) %}
+	{% set title = post.post_title %}
+	{% include 'blocks/header-single.twig' %}
+{% endblock %}
+{% block body %}
+	<style>
+		input:focus + label {
+			/*label css here*/
+
+		}
+	</style>
+	<div class="post-content max-w-screen-xl mx-auto">
+		<div {% if current_language == "ar" %} dir="rtl" {% endif%} class="{% if current_language == "ar" %} frutiger {% endif%}  w-11/12 lg:w-4/6 mx-auto">
+			{{ post.content }}
+		</div>
+	</div>
+{% endblock %}

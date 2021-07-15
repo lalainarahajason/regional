@@ -1,0 +1,79 @@
+<div class="alignfull bg-blue">
+    <div class="flex flex-wrap max-w-screen-xl mx-auto">
+        <div class="w-6/12 overflow-hidden relative" style="background-size:cover; background-repeat:no-repeat; background-image:url({{ options.home_footer.background_image.url }})">
+            <!--img class="absolute top-0 left-0 w-full z-10" src="{{ options.home_footer.background_image.url }}" alt=""-->
+            <div class="max-w-screen-md relative z-30 mb-14 left-10 relative">
+                <div>
+                    <img src="{{ options.logos.secondary.url }}" class="top-10  w-6/12">
+                </div>
+                <div class="mt-5">
+                    <img src="{{ options.logos.eu_regional_logo_footer.url }}" class="top-10  w-6/12">
+                </div>
+
+            </div>
+            <div class="max-w-screen-md flex flex-wrap relative z-30 left-10">
+                <div class="w-10/12 text-white">{{ options.home_footer.description }}</div>
+                <div class="w-10/12 flex justify-center items-center mt-10 mb-10">
+                    <a href="{{ options.home_footer.collaborate.url }}" target="{{ options.home_footer.collaborate.target }}"
+                       class="w-7/12 text-right relative btn uppercase bg-blue-light btn-mini text-lg text-white asap font-normal">
+                        <span class="btn-mask absolute top-0 left-0 w-0 h-full z-10 bg-blue"></span>
+                        <span class="relative z-30">{{ options.home_footer.collaborate.title }}</span>
+                        <span class="z-30 icon icon-left">
+                        {% set icon_width = "25" %}
+                            {% include "blocks/svg/mail.twig" %}
+                    </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="w-6/12">
+            <div class="bg-blue p-10 md:p-20 relative overflow-hidden">
+                <div class="absolute -top-10 right-10">
+                    {% include 'blocks/svg/arrow-down-blue.twig' %}
+                </div>
+
+                <h3 class="uppercase text-center text-white text-xl">{{ __("Contact us", "hopes") }}</h3>
+                <p class="text-white">{{ options.home_footer.contact_description }}</p>
+                <div class="text-center mt-10">
+                    <a target="{{ options.home_footer.contact_link.target }}" href="{{ options.home_footer.contact_link.url }}" class="md:w-6/12 relative btn uppercase btn-default bg-yellow btn-mini text-lg asap font-normal flex justify-between items-center">
+                        <span class="btn-mask absolute top-0 left-0 w-0 h-full z-10 bg-white"></span>
+                        <span class="icon absolute left-3 top-50 z-30"><img src="{{ theme.link }}/assets/images/pen.svg" alt=""></span>
+                        <span class="block relative z-30">{{ __("Contact us", "regional")}} </span>
+                    </a>
+                </div>
+            </div>
+            <div class="bg-white">
+                <div class="p-10">
+                    <div class="clients mb-8 w-full md:w-8/12 mx-auto flex justify-center">
+                        {% if clients|length > 0 %}
+                            {% for client in clients %}
+                                {% set display = client.meta('display_on_footer') %}
+                                {% if display %}
+                                    <a href="{{ client.meta('lien_partenaire') }}" target="_blank" class="hover:opacity-25 transition-all delay-75 mx-5">
+                                        <img src="{{ client.thumbnail.src }}" />
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="text-center leading-none">
+                        <small class="x-small">{{ options.footer['site-description'] }}</small>
+                    </div>
+                </div>
+                <div class="flex justify-center mb-8">
+                    {% for social in options.footer.social %}
+                        <a href="{{ social.lien.url }}" class="mx-5">
+                            <img src="{{ social.icone.url }}" alt="{{ social.lien.title }}">
+                        </a>
+                    {% endfor %}
+                </div>
+                <div class="text-center mb-8">
+                    <span class="x-small uppercase">{{ options.footer.copyright }}</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{{ function('wp_footer') }}

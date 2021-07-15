@@ -1,0 +1,45 @@
+    {% include 'helpers/breadcrumbs.twig' %}
+    <footer>
+        <div class="footer-container max-w-screen-xl bg-white p-12 w-full 2xl:w-10/12 mx-auto">
+
+            <div class="clients mb-8 w-full lg:w-10/12 mx-auto flex justify-center items-center w-full lg:w-4/12">
+                {% if clients|length > 0 %}
+                    {% for client in clients %}
+                        {% set display = client.meta('display_on_footer') %}
+                        {% if display %}
+                            <a href="{{ client.meta('lien_partenaire') }}" target="_blank" class="hover:opacity-25 transition-all delay-75 mx-5">
+                                <img src="{{ client.thumbnail.src }}" />
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="hopes--description leading-3 text-center w-full lg:w-10/12 xl:w-9/12 xxl:w-8/12 mx-auto mb-8">
+                <small class="x-small">{{ options.footer['site-description'] }}</small>
+            </div>
+            {% if options.footer.social %}
+                <div class="social mb-8 w-full lg:w-10/12 mx-auto flex flex-wrap justify-center items-center">
+                    {% for social in options.footer.social %}
+                        <a href="{{ social.lien.url }}" class="mx-5">
+                            <img src="{{ social.icone.url }}" alt="{{ social.lien.title }}">
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="footer-menu">
+                <ul class="fmenu flex flex-wrap m-0 p-0 list-none justify-center">
+                    <li>
+                        <span class="x-small uppercase">{{ options.footer.copyright }}</span>
+                    </li>
+                    {% for fmenu in footerMenu.items %}
+                        <li class="{{ fmenu.class }} mx-3">
+                            <a href="{{ fmenu.url }}" class="x-small uppercase hover:text-blue" title="{{ fmenu.post_title }}">{{ fmenu.post_title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </footer>
+    {{ function('wp_footer') }}
+    </body>
+</html>

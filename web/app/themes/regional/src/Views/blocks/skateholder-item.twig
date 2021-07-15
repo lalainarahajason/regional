@@ -1,0 +1,13 @@
+<a href="{{ project.link }}" class="group project-block bg-white {{ centrer }} w-96 swiper-slide flex flex-wrap flex-col relative" role="button">
+    <div class="overflow-hidden w-full relative">
+        <img src="{{ project.thumbnail.src('project-thumbnail') }}" alt="{{ project.post_title }}">
+    </div>
+    <div class="group-hover:bg-blue group-hover:text-white w-full h-1/4 self-end py-10 px-5 lg:px-10 relative bg-gray-80 project-content">
+        <div class="text-lg text-center uppercase text-small">{{ project.countries.name }}</div>
+        <div class="post-meta"><span class="text-small">{{ project.post_date|date('d.m.y') }}</span></div>
+        <div class="text-sm mt-3 uppercase">
+            {{ project.post_title }}
+        </div>
+
+    </div>
+</a>

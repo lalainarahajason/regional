@@ -1,0 +1,18 @@
+.hopes--button {
+    letter-spacing: 1px;
+}
+.hopes--button.hopes-large {
+    padding: 2rem 3rem;
+    font-size: 1.2rem;
+}
+.hopes--button.hopes-medium {
+    padding: 1.5rem 2rem;
+    font-size: 1.1rem;
+}
+.hopes--button.hopes-mini {
+    padding: 1rem 1.5rem;
+    font-size: 0.55rem;
+}
+.hopes--button.full {
+    color: #fff;
+}

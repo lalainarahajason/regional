@@ -1,0 +1,29 @@
+<div class="sidebar w-full max-w-xl sm:w-5/12 {% if is_single_stories %} pt-10 {% else %} pt-40 {% endif %} pl-10 pr-10 pb-10 relative
+overflow-hidden bg-no-repeatbg-cover bg-center" {% if is_single_stories %} style="background-image: url({{ post.thumbnail.src }})!important {% endif %}">
+    <!-- Single page : post cover -->
+    {% if post.thumbnail.src and is_single_stories %}
+        <img class="absolute opacity-0 z-10 top-0 left-0 w-auto h-full" src="{{ post.thumbnail.src }}" srcset="{{ post.thumbnail.srcset }}" alt="{{ post.post_title }}" style="max-width:initial">
+    {% endif %}
+    <!-- Back to -->
+    {% if back_link %}
+        <div class="flex items-center text-white mb-4 relative z-20">
+            <a href="{{ back_link }}" {% if js_back_to %} onclick="window.history.go(-1); return false;" {% endif %} class="inline-block flex items-center"><span class="w-5 inline-block">{% include 'helpers/arrow-left.twig' %} </span><span class="pl-4">back to {{ previous_page_name }}</span></a>
+        </div>
+    {% endif %}
+    <!-- Title sidebar -->
+
+    <h2 class="text-lg lg:text-4xl 2xl:text-5xl uppercase font-bold relative z-20">
+        {{ sidebar_title }}
+    </h2>
+    {% if sidebar_paragraph %}
+        <p class="text-white pt-4 lg:pt-10">{{ sidebar_paragraph }}</p>
+    {% endif %}
+    <!-- video player -->
+    {% if post.meta('video') or post.meta('video-url') %}
+        {% set infos = post.meta('moreinfos') %}
+        {% set videourl = post.meta('video-url') %}
+        <div {% if post.meta('video-url') %}data-videourl="{{ videourl }}" {% endif %} data-infosurl="{{ infos.url }}" data-infostitle="{{ infos.title }}" data-infostarget="{{ infos.target }}" data-url="{{ function('wp_get_attachment_url', post.meta('video')) }}" role="button" class="w-24 h-24 absolute z-10 bottom-10 right-10 open-video">
+            <img src="{{ theme.link }}/assets/images/play.png" alt="">
+        </div>
+    {% endif %}
+</div>

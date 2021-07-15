@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
+    <g id="maquettes" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="MENU-ROLhome" transform="translate(-1384.000000, -19.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="header-2" transform="translate(994.000000, -129.000000)">
+                <g id="Group" transform="translate(376.000000, 148.000000)">
+                    <g id="Group-2" transform="translate(14.000000, 0.000000)">
+                        <g id="menu">
+                            <path d="M28.671875,12 L-2.671875,12 C-3.40539844,12 -4,12.4477 -4,13 C-4,13.5523 -3.40539844,14 -2.671875,14 L28.671875,14 C29.4053984,14 30,13.5523 30,13 C30,12.4477 29.4053984,12 28.671875,12 Z" id="Path" transform="translate(13.000000, 13.000000) rotate(45.000000) translate(-13.000000, -13.000000) "></path>
+                        </g>
+                        <g id="menu" transform="translate(13.000000, 13.000000) scale(-1, 1) translate(-13.000000, -13.000000) ">
+                            <path d="M28.671875,12 L-2.671875,12 C-3.40539844,12 -4,12.4477 -4,13 C-4,13.5523 -3.40539844,14 -2.671875,14 L28.671875,14 C29.4053984,14 30,13.5523 30,13 C30,12.4477 29.4053984,12 28.671875,12 Z" id="Path" transform="translate(13.000000, 13.000000) rotate(45.000000) translate(-13.000000, -13.000000) "></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

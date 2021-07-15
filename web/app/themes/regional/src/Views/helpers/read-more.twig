@@ -1,0 +1,20 @@
+{% if latest|length %}
+<div class="bg-blue py-14">
+    <div class="max-w-screen-lg xl:max-w-screen-xl mx-auto px-5 lg:px-10">
+        <div class="uppercase text-center text-white tracking-widest text-sm">Read More</div>
+        <div class="posts-list">
+            {% for post in latest %}
+                <div class="flex flex-wrap text-white pt-12 pb-8 border-b border-white">
+                    <div class="post-date w-5/12 lg:w-1/12">{{ post.post_date|date('d.m.y') }}</div>
+                    <div class="post-category text-sm lg:text-lg w-5/12 lg:w-2/12 font-medium">
+                        <a href="{{ post.category.category_link }}" class="hover:text-opacity-60">{{ post.category.name }}</a>
+                    </div>
+                    <div class="pt-4 post-title text-xs lg:text-base uppercase lg:w-9/12 lg:pt-0">
+                        <a href="{{ post.link }}" class="hover:text-opacity-60">{{ post.post_title }}</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}

@@ -1,0 +1,22 @@
+<div class="flex flex-wrap">
+    {% if files|length %}
+        {% for file in files %}
+            <a href="{{ file.document.url }}" target="_blank" class="hover:bg-blue hover:text-white block mb-2 flex w-full mx-auto items-center {% if file.thumbnail.sizes|length == 0 %} justify-between py-8 px-4 {% endif %} uppercase bg-gray-100 ">
+                <div class="flex flex-wrap items-center flex-row w-full">
+                    {% if file.thumbnail.sizes|length > 0 %}
+                        <span>
+                            <img src="{{ file.thumbnail.sizes["download-thumbnail"] }}" alt="{{ file.title }}">
+                        </span>
+                    {% endif %}
+                    <span class="inline-block text-xs tracking-wider font-medium pl-4 {% if file.thumbnail.sizes|length == 0 %} w-11/12 {% else %} w-8/12 lg:w-10/12 {% endif %} ">{{ file.title }}</span>
+                    <span class="inline-block w-5 ml-3 lg:ml-0">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                </div>
+
+            </a>
+        {% endfor %}
+    {% endif %}
+</div>

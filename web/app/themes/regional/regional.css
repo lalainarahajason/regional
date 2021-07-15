@@ -1,0 +1,4 @@
+.btn-default { transition: all .9s ease-in-out }
+.btn-default:hover {
+    background-color: white!important;
+}

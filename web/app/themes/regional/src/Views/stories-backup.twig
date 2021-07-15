@@ -1,0 +1,77 @@
+{% extends "main.twig" %}
+
+{% block body %}
+    <div class="bg-blue-dark">
+        <div class="flex flex-wrap flex-col lg:flex-row">
+
+            {% include 'helpers/page-sidebar.twig' %}
+            <div class="post-content bg-white lg:w-7/12">
+                {% if posts %}
+                    <div class="post-loop flex flex-wrap">
+                        {% set loop_counter = 0 %}
+                        {% set bloc_counter = 0 %}
+                        {% for index, post in posts %}
+                            {% if loop_counter == 0 %}
+                                {% set bloc_counter = bloc_counter + 1 %}
+                                <a href="{{ post.link }}" class="stories-item large-item {% if bloc_counter is divisible by(2) %} order-3 {% else %} order-1 {% endif %} vertical h-block w-full lg:w-2/6 lg:lg-height bg-blue relative" >
+                                    {{ function('wp_get_attachment_image', post.meta('archive-cover'), 'full', {'classes':'w-full'}   ) }}
+                                    {% if post.meta('video') %}
+                                        <div class="absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-2/4">
+                                            <img src="{{ theme.link }}/assets/images/play.png" alt="">
+                                        </div>
+                                    {% endif %}
+                                    <span class="label absolute z-50 block bottom-5 right-5 left-5 uppercase font-bold text-white">
+                                        {{ post.post_title }} {{ index }}
+                                    </span>
+                                    <span class="mask z-20 absolute top-0 left-0 bg-blue w-0 h-full"></span>
+                                </a>
+
+                                {% if posts|length > 1 and loop_counter == 0 %}
+                                    <div class="order-2 lg:w-4/6 flex flex-wrap">
+                                {% endif %}
+
+                            {% else %}
+                                <!-- Image src -->
+                                {% set image = function('wp_get_attachment_image_src', post.meta('archive-cover'), 'full') %}
+                                <a href="{{ post.link }}" class="stories-item horizontal block w-full lg:w-3/6  lg:md-height bg-blue bg-opacity-10 relative bg-cover bg-no-repeat bg-center" style="background-image:url({{ image[0] }});" >
+                                    <div class="label block z-50 absolute bottom-5 right-5 left-5 uppercase font-bold text-white">{{ post.post_title }} {{ index }}</div>
+                                    <span class="mask z-20 absolute top-0 left-0 bg-blue w-0 h-full"></span>
+                                </a>
+                            {% endif %}
+                            {% set loop_counter = loop_counter + 1 %}
+
+                            <!-- close main block -->
+                            {% if loop_counter == 5 or index == posts|length - 1 %}
+                                </div><!-- end main block -->
+                                {% set loop_counter = 0 %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <!-- NAV -->
+                    <div class="nav block py-10 text-center bg-blue">
+                        {% if posts.pagination.prev %}
+                            <a href="{{posts.pagination.prev.link}}"
+                               target="" class="{{posts.pagination.prev.link|length ? '' : 'invisible'}} mx-3 btn btn-outline uppercase relative hover:text-blue-dark py-3 px-10 w-full">
+                                <span class="btn-mask absolute top-0 left-0 z-10 bg-white w-0 h-full"></span>
+                                <span class="z-50 relative text-xs transition delay-75 ease-in-out">PREV</span>
+                            </a>
+                        {% endif %}
+                        {% if posts.pagination.next %}
+                            <a href="{{posts.pagination.next.link}}"
+                               target="" class="{{posts.pagination.next.link|length ? '' : 'invisible'}} btn btn-outline uppercase relative hover:text-blue-dark py-3 px-10 w-full">
+                                <span class="btn-mask absolute top-0 left-0 z-10 bg-white w-0 h-full"></span>
+                                <span class="z-50 relative text-xs transition delay-75 ease-in-out">NEXT</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                    <!-- END NAV -->
+                {% endif %}
+            </div>
+
+
+        </div>
+
+    </div>
+    {% include 'helpers/read-more.twig' %}
+
+{% endblock %}

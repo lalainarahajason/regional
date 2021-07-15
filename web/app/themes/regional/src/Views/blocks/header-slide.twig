@@ -1,0 +1,47 @@
+<header class="overflow-hidden bg-white relative z-10">
+
+    <div class="w-full ml-auto flex flex-wrap">
+        {% include 'helpers/logos.twig' %}
+        <div class="w-9/12 swiper-container relative z-40 homeSlider">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+
+                {% for slide in options.slideshow.slide  %}
+                    {% set bgimage = function('wp_get_attachment_url', slide.image, 'full', attribute('class', 'w-full object-full')) %}
+
+                    <div class="swiper-slide relative bg-no-repeat bg-cover" style="background-image: url({{ bgimage }})">
+                        <div class="bottom-0 right-0 w-11/12 md:w-8/12 flex wrap justify-between absolute">
+                            <div class="lg:self-center lg:pb-20">
+                                {% set a = slide.title|split('br') %}
+
+                                <h2 class="text-lg text-blue title-bg lg:text-4xl xl:text-5xl uppercase font-normal {% if slide["sub-title"] %} pb-0 {% else %} pb-4 {% endif %} pr-5 lg:pr-20 mb-0">
+                                    {% for t in a %}
+                                        <span class="bg-white table px-4 mb-2">{{ t|striptags|replace({'/>': ''}) }}</span>
+                                    {% endfor %}
+                                </h2>
+                                {% if slide["sub-title"] %}
+                                    <div class="mb-3">
+                                        <span class="inline-block px-4 py-3 bg-blue-light text-3xl text-white">{{ slide["sub-title"] }}</span>
+                                    </div>
+                                {% endif %}
+                                <a target="{{ slide.link.target }}" href="{{ slide.link.url }}" class="relative btn items-center uppercase  bg-yellow btn-mini text-lg asap font-normal flex">
+                                    <span class="btn-mask absolute top-0 left-0 w-0 h-full z-10 bg-white"></span>
+                                    <span class="mr-4 relative z-30">{{ slide.link.title }}</span>
+                                    <span class="z-30 icon icon-right">{% include "blocks/svg/arrow.twig" %}</span>
+                                </a>
+                            </div>
+                            <!--h2 class="text-lg lg:text-5xl xl:text-7xl h-stroke uppercase font-bold text-right pb-5 pr-5 lg:pb-20 lg:pr-20">{{ slide.title }}</h2-->
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <!-- Swiper pagination -->
+            <div class="bottom-5 right-0 w-11/12 md:w-8/12 hidden md:flex wrap justify-between absolute">
+                <div class="swiper-pagination relative"></div>
+            </div>
+
+        </div>
+    </div>
+</header>

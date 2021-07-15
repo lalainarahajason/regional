@@ -1,0 +1,10 @@
+<!--div style="width:100px" id="language-switcher" class="{% if is_single or is_page %} absolute bottom-0 right-0 {% else %} relative  {% endif %} z-50">
+    <div class="language-switcher absolute flex flex-wrap flex-col justify-around {% if not is_single and not is_page %} -bottom-8 {% endif%} right-0 bg-blue-dark px-5 py-3 h-16">
+    </div>
+</div-->
+
+<div id="language-switcher" class="relative z-50">
+    <div class="language-switcher flex flex-wrap flex-col justify-around right-0 bg-blue-dark py-3 h-16">
+        {{ function('icl_post_languages') }}
+    </div>
+</div>
