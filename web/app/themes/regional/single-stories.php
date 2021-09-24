@@ -38,6 +38,8 @@ $context['profile'] = get_field('profile', $current_post);
 
 /* is post is translated ? */
 $context['is_translated'] = apply_filters('wpml_element_has_translations', null, $current_post, 'stories');
-
+$context['translation'] = array(
+    'more_filter' => __('More filter', 'regional')
+);
 
 Timber::render('single-stories.twig', $context);

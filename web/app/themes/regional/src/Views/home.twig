@@ -15,7 +15,7 @@
     </style>
     {% if activities|length > 0 %}
     <section  style="background: #f1f1f1">
-        <h3 class="text-3xl lg:text-5xl text-blue text-center py-4 uppercase">Our activities, News and Events</h3>
+        <h3 class="text-3xl lg:text-5xl text-blue text-center py-4 uppercase">{{translation.activities_title}}</h3>
         <div class="swiper-container activitiesSlider max-w-screen-xl mx-auto">
             <div class="hidden ml-auto lg:flex justify-between hopes--swiper-navigation bottom-5">
                 <div class="swiper-button-prev relative"></div>
@@ -52,7 +52,7 @@
             <div class="text-right my-4 mr-4 bg-red">
                 <a href="{{ site.link }}/activities" class="uppercase text-xl inline-block ">
                     <span class="flex items-center items-center">
-                        <span class="mr-4">{{ __('View all', 'hopes') }}</span>
+                        <span class="mr-4">{{ translation.view_all }}</span>
                         <img style="width:20px" src="{{ theme.link }}/assets/images/arrow-left.png" alt="">
                     </span>
 

@@ -36,4 +36,7 @@ $context['degrees'] = get_terms('jobs',array(
 $context['terms_childrens'] = get_terms($filters);
 $context['form'] = $_POST;
 $context['sidebar_title'] = $theme->filterPageHeaderTitle($sidebar_title);
+$context['translation'] = array(
+    'more_filter' => __('More filter', 'regional')
+);
 Timber::render('stories.twig', $context);

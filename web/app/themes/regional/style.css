@@ -10,7 +10,7 @@ Requires PHP: 5.6
 Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: opsleb
+Text Domain: regional
 */
 .swiper-pagination {display: flex; align-items: center; justify-content: center}
 .swiper-pagination-bullet { transition: all .5s ease-in-out; margin-right:10px; width:6px; height:6px; background-color: white; opacity: 1 }

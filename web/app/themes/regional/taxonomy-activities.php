@@ -36,4 +36,7 @@ $type_children_args = array(
 $context['terms'] = Timber::get_terms($type_children_args);
 $context["parent_categories"] = isset($_GET['filter']) ? $_GET['filter'] : 'all' ;
 $context['countries'] = Timber::get_terms(['taxonomy' => 'countries', 'hide_empty' => 0]);
+$context['translation'] = array(
+    'more_filter' => __('More filter', 'regional')
+);
 Timber::render('taxonomy-activities.twig', $context);

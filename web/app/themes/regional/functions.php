@@ -162,3 +162,18 @@ function wpb_sender_email( $original_email_address ) {
 function wpb_sender_name( $from_name ) {
     return 'Regional';
 }
+
+/***** timber translation */
+add_filter('get_twig', 'add_to_twig');
+
+function add_to_twig($twig) {
+
+    $twig->addExtension(new Twig_Extension_StringLoader());
+
+    $twig->addFilter(new Twig_SimpleFilter('translate', 'create_translated_string'));
+    return $twig;
+}
+
+function create_translated_string($text) {
+    return __($text, 'regional');
+}

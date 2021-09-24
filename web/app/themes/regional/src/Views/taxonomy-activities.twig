@@ -55,7 +55,7 @@
                 <div class="widget more-filters">
 
                     {% if terms|length > 0 %}
-                        <h4 class="uppercase text-sm">{{ __('More filters', 'hopes') }}</h4>
+                        <h4 class="uppercase text-sm">{{ translation.more_filter }}</h4>
                         <ul class="list-none">
                             {% for term in terms %}
                                 <li><a href="{{ site.link }}/activities/{{ term.slug }}" class="uppercase transition-all ease-in-out  text-sm hover:text-blue-light">{{ term.name }}</a></li>
